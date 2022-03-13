@@ -7,12 +7,12 @@ import {
 } from "../entity";
 
 export default async function insertRoleService(
-  connection: Connection
+  connection: Connection,
+  roles: RoleModel[],
+  services: ServiceModel[]
 ): Promise<void> {
   try {
-      console.log('seeding role service');
-    var services = await connection.manager.find(ServiceModel);
-    var roles = await connection.manager.find(RoleModel);
+    console.log("seeding role service");
     if (services.length < 1) {
       console.log("services not seeded");
       return;
