@@ -1,2 +1,3 @@
 import { Connection } from "typeorm";
-export default function insertRoleService(connection: Connection): Promise<void>;
+import { RoleModel, ServiceModel } from "../entity";
+export default function insertRoleService(connection: Connection, roles: RoleModel[], services: ServiceModel[]): Promise<void>;

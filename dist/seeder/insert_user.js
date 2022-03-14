@@ -36,36 +36,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var entity_1 = require("../entity");
-function insertUser(connection) {
+function insertUser(connection, users) {
     return __awaiter(this, void 0, void 0, function () {
-        var result, user, e_1;
+        var e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 5, , 6]);
-                    return [4 /*yield*/, connection.manager.find(entity_1.RoleModel, {
-                            where: {
-                                name: "root",
-                            },
-                        })];
+                    _a.trys.push([0, 4, , 5]);
+                    if (!(users.length > 0)) return [3 /*break*/, 2];
+                    return [4 /*yield*/, connection.manager.save(users)];
                 case 1:
-                    result = _a.sent();
-                    if (!(result.length > 0)) return [3 /*break*/, 3];
-                    user = new entity_1.UserModel(result[0], "root", "root");
-                    return [4 /*yield*/, connection.manager.save(user)];
-                case 2:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
-                    console.log("roles not seeded");
+                    return [3 /*break*/, 3];
+                case 2:
+                    console.log("users was empty");
                     return [2 /*return*/];
-                case 4: return [3 /*break*/, 6];
-                case 5:
+                case 3: return [3 /*break*/, 5];
+                case 4:
                     e_1 = _a.sent();
-                    console.log('cannot_seed_users', e_1);
+                    console.log("cannot_seed_users", e_1);
                     throw Error("cannot_seed_users");
-                case 6: return [2 /*return*/];
+                case 5: return [2 /*return*/];
             }
         });
     });

@@ -37,20 +37,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var entity_1 = require("../entity");
-function insertRoleService(connection) {
+function insertRoleService(connection, roles, services) {
     return __awaiter(this, void 0, void 0, function () {
-        var services, roles, i, e_1;
+        var i, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 7, , 8]);
-                    console.log('seeding role service');
-                    return [4 /*yield*/, connection.manager.find(entity_1.ServiceModel)];
-                case 1:
-                    services = _a.sent();
-                    return [4 /*yield*/, connection.manager.find(entity_1.RoleModel)];
-                case 2:
-                    roles = _a.sent();
+                    _a.trys.push([0, 5, , 6]);
+                    console.log("seeding role service");
                     if (services.length < 1) {
                         console.log("services not seeded");
                         return [2 /*return*/];
@@ -60,24 +54,24 @@ function insertRoleService(connection) {
                         return [2 /*return*/];
                     }
                     i = 0;
-                    _a.label = 3;
-                case 3:
-                    if (!(i < roles.length)) return [3 /*break*/, 6];
+                    _a.label = 1;
+                case 1:
+                    if (!(i < roles.length)) return [3 /*break*/, 4];
                     return [4 /*yield*/, connection.manager.save(services.map(function (e) {
                             return new entity_1.RoleServiceModel(roles[i], e);
                         }))];
-                case 4:
+                case 2:
                     _a.sent();
-                    _a.label = 5;
-                case 5:
+                    _a.label = 3;
+                case 3:
                     i++;
-                    return [3 /*break*/, 3];
-                case 6: return [3 /*break*/, 8];
-                case 7:
+                    return [3 /*break*/, 1];
+                case 4: return [3 /*break*/, 6];
+                case 5:
                     e_1 = _a.sent();
                     console.log("cannot_roles_services", e_1);
                     throw Error("cannot_roles_services");
-                case 8: return [2 /*return*/];
+                case 6: return [2 /*return*/];
             }
         });
     });

@@ -1,2 +1,3 @@
 import { Connection } from "typeorm";
-export default function insertUser(connection: Connection): Promise<void>;
+import { UserModel } from "../entity";
+export default function insertUser(connection: Connection, users: UserModel[]): Promise<void>;

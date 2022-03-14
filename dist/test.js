@@ -36,29 +36,36 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-function insertRole(connection, roles) {
-    return __awaiter(this, void 0, void 0, function () {
-        var e_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    if (roles.length < 1) {
-                        console.log("roles was empty");
-                        return [2 /*return*/];
-                    }
-                    console.log("Inserting a roles into the database...");
-                    return [4 /*yield*/, connection.manager.save(roles)];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    e_1 = _a.sent();
-                    throw Error("cannot_seed_roles");
-                case 3: return [2 /*return*/];
-            }
-        });
+var _1 = require(".");
+var entity_1 = require("./entity");
+var dbConfig = {
+    database_dialect: "postgres",
+    database_host: "localhost",
+    database_name: "postgres",
+    database_password: "postgres",
+    database_port: 5432,
+    database_username: "postgres",
+};
+(0, _1.connectToDatabase)(dbConfig)
+    .then(function (connection) {
+    /// your callback here
+    /// pass connection variable into your function
+    /// ex : callback(connection);
+})
+    .catch(function (e) {
+    console.log("error connecting into database");
+});
+(0, _1.seedingData)(dbConfig, function (connection) { return __awaiter(void 0, void 0, void 0, function () {
+    var roleModel;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                roleModel = new entity_1.RoleModel("admin");
+                return [4 /*yield*/, connection.manager.save(roleModel)];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
     });
-}
-exports.default = insertRole;
-//# sourceMappingURL=insert_roles.js.map
+}); });
+//# sourceMappingURL=test.js.map

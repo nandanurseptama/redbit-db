@@ -1,2 +1,3 @@
 import { Connection } from "typeorm";
-export default function insertRole(connection: Connection): Promise<void>;
+import { RoleModel } from "../entity";
+export default function insertRole(connection: Connection, roles: RoleModel[]): Promise<void>;

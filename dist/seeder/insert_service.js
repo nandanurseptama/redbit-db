@@ -36,19 +36,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var entity_1 = require("../entity");
-function insertService(connection) {
+function insertService(connection, services) {
     return __awaiter(this, void 0, void 0, function () {
-        var auth, chat, email, e_1;
+        var e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    auth = new entity_1.ServiceModel("auth");
-                    chat = new entity_1.ServiceModel("chat");
-                    email = new entity_1.ServiceModel("email");
+                    if (services.length < 1) {
+                        console.log("services was empty");
+                        return [2 /*return*/];
+                    }
                     console.log("Inserting a services into the database...");
-                    return [4 /*yield*/, connection.manager.save([auth, email, chat])];
+                    return [4 /*yield*/, connection.manager.save(services)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
