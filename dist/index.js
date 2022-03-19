@@ -75,6 +75,12 @@ function connectToDatabase(config) {
                         password: config.database_password,
                         database: config.database_name,
                         type: config.database_dialect,
+                        entities: [
+                            entity_1.RoleModel,
+                            entity_1.ServiceModel,
+                            entity_1.RoleServiceModel,
+                            entity_1.UserModel,
+                        ]
                     })];
                 case 1: return [2 /*return*/, _a.sent()];
             }

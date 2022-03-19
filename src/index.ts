@@ -30,6 +30,12 @@ async function connectToDatabase(config: DatabaseConfig): Promise<Connection> {
     password: config.database_password,
     database: config.database_name,
     type: config.database_dialect,
+    entities : [
+      RoleModel,
+      ServiceModel,
+      RoleServiceModel,
+      UserModel,
+    ]
   });
 }
 export {
