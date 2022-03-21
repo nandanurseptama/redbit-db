@@ -21,9 +21,10 @@ export class User {
   })
   id: string | undefined;
 
-  @ManyToOne((type) => RoleModel, (role) => role.id)
+  @ManyToOne(type => RoleModel, (role) => role.id)
   @JoinColumn({
     name: "id_role",
+    referencedColumnName:"id",
   })
   role: Relation<RoleModel>;
 

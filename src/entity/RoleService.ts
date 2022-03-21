@@ -19,13 +19,13 @@ export class RoleService {
   })
   id: string | undefined;
 
-  @ManyToMany((type) => RoleModel, (role) => role.id)
+  @ManyToMany(type => RoleModel, (role) => role.id)
   @JoinColumn({
     name: "id_role",
   })
   role: Relation<RoleModel>;
 
-  @ManyToMany((type) => ServiceModel, (service) => service.id)
+  @ManyToMany(type => ServiceModel, (service) => service.id)
   @JoinColumn({
     name: "id_service",
   })
